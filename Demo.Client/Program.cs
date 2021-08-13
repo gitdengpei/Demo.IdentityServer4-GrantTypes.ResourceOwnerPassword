@@ -17,13 +17,15 @@ namespace Demo.Client
 				Console.WriteLine(disco.Error);
 				return;
 			}
-			var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+			var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
 			{
 				Address = disco.TokenEndpoint,
 
 				ClientId = "DemoScope_client",
 				ClientSecret = "secret",
-				GrantType = "client_credentials"
+				UserName = "admin",
+				Password = "123"
+
 			});
 
 			if (tokenResponse.IsError)
